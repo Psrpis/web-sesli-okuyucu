@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "Web Sesli Okuyucu",
+  "version": "1.0.0",
+  "description": "Seçili metni otomatik olarak sesli okur. Google Translate TTS kullanır.",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://translate.google.com/*",
+    "https://translate.google.com.tr/*",
+    "https://translate.google.com.hk/*",
+    "https://translate.google.cn/*"
+  ],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content-script.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "Web Sesli Okuyucu Ayarları"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
